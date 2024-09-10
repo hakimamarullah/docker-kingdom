@@ -67,7 +67,7 @@ services:
             - api-key-management
             - dbmicro
     payment-service:
-         image: hakimamarullah/payment-service-nestjs:v1.0.0
+         image: hakimamarullah/payment-service-nestjs:beta1.0.0
          pull_policy: always
          deploy:
            mode: replicated
