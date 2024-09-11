@@ -67,11 +67,11 @@ services:
             - api-key-management
             - dbmicro
     payment-service:
-         image: hakimamarullah/payment-service-nestjs:beta1.0.0
+         image: hakimamarullah/payment-service-nestjs:v1.0.0
          pull_policy: always
          deploy:
            mode: replicated
-           replicas: 1
+           replicas: 2
            restart_policy:
              condition: on-failure
          env_file: .env.payment-service.docker
