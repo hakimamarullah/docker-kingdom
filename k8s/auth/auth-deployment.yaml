@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: auth-service
+  template:
+    metadata:
+      labels:
+        app: auth-service
+    spec:
+      containers:
+        - name: auth-service
+          image: hakimamarullah/auth-service-nestjs:v1.0.0
+          ports:
+            - containerPort: 3001
+          resources:
+            requests:
+              cpu: "10m"   # Minimum CPU requested
+              memory: "16Mi"  # Minimum memory requested
+            limits:
+              cpu: "50m"   # Maximum CPU allowed
+              memory: "64Mi"  # Maximum memory allowed
+          envFrom:
+            - configMapRef:
+                name: auth-k8s-env
+      automountServiceAccountToken: false
