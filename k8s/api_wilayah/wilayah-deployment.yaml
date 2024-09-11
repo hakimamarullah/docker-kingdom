@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wilayah-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: wilayah-service
+  template:
+    metadata:
+      labels:
+        app: wilayah-service
+    spec:
+      containers:
+        - name: wilayah-service
+          image: hakimamarullah/api-wilayah-ri-nestjs:v1.0.0
+          ports:
+            - containerPort: 3003
+          resources:
+            requests:
+              cpu: "10m"   # Minimum CPU requested
+              memory: "16Mi"  # Minimum memory requested
+            limits:
+              cpu: "50m"   # Maximum CPU allowed
+              memory: "64Mi"  # Maximum memory allowed
+          envFrom:
+            - configMapRef:
+                name: wilayah-k8s-env

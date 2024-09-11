@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-key-management-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api-key-management-service
+  template:
+    metadata:
+      labels:
+        app: api-key-management-service
+    spec:
+      containers:
+        - name: api-key-management-service
+          image: hakimamarullah/api-key-management-service-nestjs:v1.0.0
+          ports:
+            - containerPort: 3002
+          resources:
+            requests:
+              cpu: "10m"   # Minimum CPU requested
+              memory: "16Mi"  # Minimum memory requested
+            limits:
+              cpu: "50m"   # Maximum CPU allowed
+              memory: "64Mi"  # Maximum memory allowed
+          envFrom:
+            - configMapRef:
+                name: api-key-service-k8s-env
