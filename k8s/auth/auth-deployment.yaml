@@ -15,17 +15,24 @@ spec:
       containers:
         - name: auth-service
           image: hakimamarullah/auth-service-nestjs:v1.0.0
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent  # Only pull the image if it doesn't exist locally
           ports:
             - containerPort: 3001
           resources:
             requests:
-              cpu: "10m"   # Minimum CPU requested
-              memory: "16Mi"  # Minimum memory requested
+              cpu: "256m"
+              memory: "256Mi"
             limits:
-              cpu: "50m"   # Maximum CPU allowed
-              memory: "64Mi"  # Maximum memory allowed
+              cpu: "512m"
+              memory: "512Mi"
           envFrom:
             - configMapRef:
                 name: auth-k8s-env
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3001
+            initialDelaySeconds: 2
+            periodSeconds: 10
+            failureThreshold: 6
       automountServiceAccountToken: false

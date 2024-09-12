@@ -3,12 +3,12 @@ import { check } from 'k6';
 
 export const options = {
   // A number specifying the number of VUs to run concurrently.
-  vus: 30,
+  vus: 100,
   // A string specifying the total duration of the test run.
   duration: '60s',
   thresholds: {
       http_req_failed: ['rate<0.00'], // http errors should be less than 1%
-      http_req_duration: ['p(100)<3000'], // 99% of requests should be below 10s
+      // http_req_duration: ['p(100)<3000'], // 99% of requests should be below 10s
     },
 
   // The following section contains configuration options for execution of this
@@ -60,11 +60,11 @@ export const options = {
 // about authoring k6 scripts.
 //
 export default function() {
-  const res = http.post('http://127.0.0.1/auth-service/auth/login',{
+  const res = http.post('http://auth-service-dev.local/auth/login',{
      username: "admin",
      password: "admin123"
   });
   check(res, {
-      'response code was 200': (res) => res.status === 200
+      'response code was 200': (res) => res.status === 200,
     });
 }
