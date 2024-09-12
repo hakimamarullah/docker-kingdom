@@ -7,5 +7,5 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 30Gi
+      storage: 3Gi
   storageClassName: standard  # Adjust according to your StorageClass
