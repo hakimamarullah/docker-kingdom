@@ -4,7 +4,7 @@ metadata:
   name: postgres
 spec:
   serviceName: "postgres"
-  replicas: 2  # Adjust based on your traffic needs and replication requirements
+  replicas: 1  # Adjust based on your traffic needs and replication requirements
   selector:
     matchLabels:
       app: postgres
