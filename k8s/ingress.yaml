@@ -15,4 +15,46 @@ spec:
             name: auth-service-loadbalancer
             port:
               number: 80
+  - host: payment-service-dev.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: payment-service-loadbalancer
+            port:
+              number: 80
+  - host: api-key-manager-service-dev.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: api-key-management-service-loadbalancer
+            port:
+              number: 80
+
+  - host: api-wilayah-service-dev.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: wilayah-service-loadbalancer
+            port:
+              number: 80
+
+  - host: wilayah-ri-dev.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name:  wilayah-ri-fe-loadbalancer
+            port:
+              number: 80
   
