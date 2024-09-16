@@ -1,7 +1,3 @@
-Sure! Here’s the enhanced README with the additional instructions for Kubernetes, Minikube, database migration, and other details:
-
----
-
 # Backend Setup Guide
 
 Welcome to the backend setup repository! This guide will walk you through the steps required to configure and deploy the backend services using Kubernetes, Minikube, and associated tools.
@@ -82,7 +78,15 @@ Follow these steps to set up and deploy the backend services:
      npx prisma migrate deploy
      ```
 
-### 8. Access Services
+### 8. Monitor the Cluster
+
+- **Access Minikube Dashboard**: You can monitor your Kubernetes cluster and manage your deployments using the Minikube dashboard. Run the following command to open the dashboard in your default web browser:
+
+  ```bash
+  minikube dashboard
+  ```
+
+### 9. Access Services
 
 - **Verify Deployment**: Once all scripts have been executed successfully, you can access your services using the custom hostname(s) registered in the ingress configuration.
 
