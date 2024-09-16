@@ -81,6 +81,17 @@ services:
             - auth-service
             - dbmicro
 
+    wilayah-ri-fe:
+         image: hakimamarullah/wilayah-ri-fe:v1.0.0
+         pull_policy: always
+         deploy:
+           mode: replicated
+           replicas: 1
+           restart_policy:
+             condition: on-failure
+         networks:
+            - api-micro
+
 
 volumes:
     pgdata: {}

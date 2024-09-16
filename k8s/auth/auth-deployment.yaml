@@ -15,7 +15,7 @@ spec:
       containers:
         - name: auth-service
           image: hakimamarullah/auth-service-nestjs:v1.0.0
-          imagePullPolicy: IfNotPresent  # Only pull the image if it doesn't exist locally
+          imagePullPolicy: Always 
           ports:
             - containerPort: 3001
           resources:

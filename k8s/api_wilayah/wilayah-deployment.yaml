@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wilayah-service
+  name: wilayah-service-deployment
 spec:
   replicas: 1
   selector:
@@ -15,6 +15,7 @@ spec:
       containers:
         - name: wilayah-service
           image: hakimamarullah/api-wilayah-ri-nestjs:v1.0.0
+          imagePullPolicy: Always
           ports:
             - containerPort: 3003
           resources:
@@ -26,4 +27,4 @@ spec:
               memory: "64Mi"  # Maximum memory allowed
           envFrom:
             - configMapRef:
-                name: wilayah-k8s-env
+                name: api-wilayah-k8s-env

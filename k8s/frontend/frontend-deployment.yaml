@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: wilayah-ri-fe-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: wilayah-ri-fe
@@ -15,7 +15,7 @@ spec:
       containers:
         - name: wilayah-ri-fe
           image: hakimamarullah/wilayah-ri-fe:v1.0.0
-          imagePullPolicy: IfNotPresent  # Only pull the image if it doesn't exist locally
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
           resources:

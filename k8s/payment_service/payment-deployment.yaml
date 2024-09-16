@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: payment-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: payment-service
@@ -15,6 +15,7 @@ spec:
       containers:
         - name: payment-service
           image: hakimamarullah/payment-service-nestjs:v1.0.0
+          imagePullPolicy: Always
           ports:
             - containerPort: 3004
           resources:
@@ -26,4 +27,4 @@ spec:
               memory: "64Mi"  # Maximum memory allowed
           envFrom:
             - configMapRef:
-                name: payment-service-k8s-env
+                name: payment-k8s-env
