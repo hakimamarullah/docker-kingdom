@@ -1,3 +1,5 @@
 .idea
 
 .env.*.docker
+
+k8s/github-secret.yaml

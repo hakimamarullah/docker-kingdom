@@ -28,11 +28,7 @@ spec:
           value: micro
         - name: POSTGRES_PASSWORD
           value: micro
-  volumeClaimTemplates:
-  - metadata:
-      name: postgres-storage
-    spec:
-      accessModes: ["ReadWriteOnce"]
-      resources:
-        requests:
-          storage: 3Gi
+      volumes:  # Corrected indentation
+      - name: postgres-storage
+        persistentVolumeClaim:
+          claimName: postgres-pvc

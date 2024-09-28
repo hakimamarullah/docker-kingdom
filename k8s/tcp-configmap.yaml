@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tcp-services
+  namespace: ingress-nginx  # Make sure this matches your Ingress namespace
+data:
+  "5672": "default/rabbitmq:5672"  # Adjust 'default' to your RabbitMQ namespace if needed

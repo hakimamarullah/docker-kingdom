@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scc-service-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: starline-scc
+  template:
+    metadata:
+      labels:
+        app: starline-scc
+    spec:
+      containers:
+        - name: starline-scc
+          image: hakimamarullah/starline-scc:v1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: "256m"
+              memory: "256Mi"
+            limits:
+              cpu: "512m"
+              memory: "512Mi"
+          env:  # Moved this line to be correctly indented
+            - name: USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: github-secret
+                  key: GITHUB_USERNAME  # Ensure the key matches what you defined in the secret
+            - name: PERSONAL_ACCESS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: github-secret
+                  key: GITHUB_PRIVATE_TOKEN # Ensure the key matches what you defined in the secret
+            - name: JAVA_OPTS
+              value: "-Djdk.tls.client.protocols=TLSv1.2 -Dspring.cloud.config.server.git.skipSslValidation=true"

@@ -57,4 +57,23 @@ spec:
             name:  wilayah-ri-fe-loadbalancer
             port:
               number: 80
-  
+  - host: rabbitmq-manager-dev.local
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: rabbitmq
+              port:
+                number: 15672
+  - host: mailer-service-dev.local
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: mailer-service
+              port:
+                number: 80

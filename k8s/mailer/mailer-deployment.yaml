@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mailer-service-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mailer-app
+  template:
+    metadata:
+      labels:
+        app: mailer-app
+    spec:
+      containers:
+        - name: mailer-app
+          image: hakimamarullah/spring-mailer-service:v1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: "256m"
+              memory: "256Mi"
+            limits:
+              cpu: "512m"
+              memory: "512Mi"
+          env:
+            - name: JAVA_OPTS
+              value: "-Dspring.profiles.active=dev"
+            - name: SPRING_CLOUD_CONFIG_URI
+              value: http://starline-scc-service?max-attempt=5

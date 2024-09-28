@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq
+spec:
+  type: ClusterIP  # Set the service type to ClusterIP
+  ports:
+    - name: amqp  # Optional: Named port for better clarity
+      port: 5672
+      targetPort: 5672
+    - name: management  # Optional: Named port for the management interface
+      port: 15672
+      targetPort: 15672
+  selector:
+    app: rabbitmq
