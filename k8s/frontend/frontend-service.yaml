@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: wilayah-ri-fe-loadbalancer
+  name: wilayah-ri-fe-service
   annotations:
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"  # Wait for 30 seconds to establish a connection
     nginx.ingress.kubernetes.io/proxy-read-timeout: "30"     # Wait for 30 seconds for a response from the service

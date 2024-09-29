@@ -12,7 +12,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: auth-service-loadbalancer
+            name: auth-service
             port:
               number: 80
   - host: payment-service-dev.local
@@ -22,7 +22,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: payment-service-loadbalancer
+            name: payment-service
             port:
               number: 80
   - host: api-key-manager-service-dev.local
@@ -32,7 +32,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: api-key-management-service-loadbalancer
+            name: api-key-management-service
             port:
               number: 80
 
@@ -43,7 +43,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: wilayah-service-loadbalancer
+            name: wilayah-service
             port:
               number: 80
 
@@ -54,7 +54,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name:  wilayah-ri-fe-loadbalancer
+            name:  wilayah-ri-fe-service
             port:
               number: 80
   - host: rabbitmq-manager-dev.local

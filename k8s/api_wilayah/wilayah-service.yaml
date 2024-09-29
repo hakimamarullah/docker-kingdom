@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: wilayah-service-loadbalancer
+  name: wilayah-service
 spec:
   selector:
-    app: wilayah-service
+    app: wilayah-app
   ports:
     - protocol: TCP
       port: 80

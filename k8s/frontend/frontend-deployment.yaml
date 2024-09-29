@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: wilayah-ri-fe
-          image: hakimamarullah/wilayah-ri-fe:v1.0.0
+          image: hakimamarullah/wilayah-ri-fe:beta
           imagePullPolicy: Always
           ports:
             - containerPort: 3000

@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: payment-service-loadbalancer
+  name: payment-service
 spec:
   selector:
-    app: payment-service
+    app: payment-app
   ports:
     - protocol: TCP
       port: 80

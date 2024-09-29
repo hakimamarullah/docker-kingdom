@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wilayah-service-deployment
+  name: wilayah-app-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: wilayah-service
+      app: wilayah-app
   template:
     metadata:
       labels:
-        app: wilayah-service
+        app: wilayah-app
     spec:
       containers:
-        - name: wilayah-service
+        - name: wilayah-app
           image: hakimamarullah/api-wilayah-ri-nestjs:v1.0.0
           imagePullPolicy: Always
           ports:

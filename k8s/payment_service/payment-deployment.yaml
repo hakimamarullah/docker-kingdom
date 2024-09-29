@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: payment-deployment
+  name: payment-app-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: payment-service
+      app: payment-app
   template:
     metadata:
       labels:
-        app: payment-service
+        app: payment-app
     spec:
       containers:
-        - name: payment-service
+        - name: payment-app
           image: hakimamarullah/payment-service-nestjs:v1.0.0
           imagePullPolicy: Always
           ports:

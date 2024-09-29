@@ -27,6 +27,6 @@ spec:
               memory: "512Mi"
           env:
             - name: JAVA_OPTS
-              value: "-Dspring.profiles.active=dev"
+              value: "-Dspring.profiles.active=dev -Djdk.tls.client.protocols=TLSv1.2"
             - name: SPRING_CLOUD_CONFIG_URI
-              value: http://starline-scc-service?max-attempt=5
+              value: http://starline-scc-service.default.svc.cluster.local?max-attempt=5
